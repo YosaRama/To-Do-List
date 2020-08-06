@@ -1,0 +1,30 @@
+<!-- cara manggil header di EJS -->
+<%- include("header")  -%> 
+        <div class="box" id="heading">
+        <h1><%= listTitle %></h1>
+        </div>
+
+        <div class="box">
+            <% newListItems.forEach(function(item){ %>
+                <form action="/delete" method="POST">
+                    <div class="item">
+                        <input type="checkbox" onChange="this.form.submit()" name="checkbox" value= <%= item._id %>>
+                        <p>
+                            <%= item.name %>
+                        </p>
+                    </div>
+                    <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+                </form>
+            <% }) %>
+
+            <form class="item" action="/" method="POST">
+                <input type="text" name="newItem" placeholder="Add New List" autocomplete="off">
+                <button type="submit" name="list" value= <%= listTitle %>  >+</button>
+
+            </form>
+        </div>
+
+<!-- cara manggil footer di EJS -->
+<%- include("footer")  -%> 
+
+<!-- ini bagian TODOLIST -->
