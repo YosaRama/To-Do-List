@@ -143,7 +143,11 @@ app.post("/delete", function (req, res) {
 });
 
 // kasi port server
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
 
-app.listen(process.env.PORT || 3000, function () {
+app.listen(port, function () {
   console.log("this port is 3000");
 });
